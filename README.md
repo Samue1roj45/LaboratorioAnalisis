@@ -21,7 +21,4 @@ Cada estación del laboratorio está en su propia rama y parte de la anterior:
 | `estacion-7` | Controlar el ciclo de vida con State |
 | `estacion-8` | Integrar y ejecutar la aplicación completa |
 
-## Ejecución
 
-Abrir la carpeta `BibliotecaReservas` en el IDE, marcar `src` como carpeta de
-fuentes y ejecutar `biblioteca.Main`.
