@@ -1,46 +1,29 @@
 package biblioteca;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("=== P01: construcción con todos los datos ===");
-        Reserva reserva = new ReservaBuilder()
-            .estudiante(new Estudiante("E001", "Laura"))
-            .fecha(LocalDate.now().plusDays(7))
-            .horaInicio(LocalTime.of(14, 0))
-            .duracionHoras(2)
-            .cantidadPersonas(4)
-            .sala(new Sala("B", "Sala B", 4))
-            .build();
-        System.out.println(reserva);
+        List<Sala> disponibles = List.of(
+            new Sala("A", "Sala A", 2),
+            new Sala("B", "Sala B", 4),
+            new Sala("C", "Sala C", 6),
+            new Sala("D", "Sala D", 8)
+        );
 
-        System.out.println("\n=== P02: construcción sin estudiante ===");
-        try {
-            new ReservaBuilder()
-                .fecha(LocalDate.now().plusDays(7))
-                .horaInicio(LocalTime.of(14, 0))
-                .duracionHoras(2)
-                .cantidadPersonas(4)
-                .sala(new Sala("B", "Sala B", 4))
-                .build();
-        } catch (IllegalStateException ex) {
-            System.out.println("Construcción rechazada: " + ex.getMessage());
-        }
+        System.out.println("=== P03: selección por capacidad ===");
+        EstrategiaSeleccionSala porCapacidad = new SeleccionPorCapacidad();
+        System.out.println("Para 4 personas: "
+            + porCapacidad.seleccionar(disponibles, 4).orElse(null));
 
-        System.out.println("\n=== Prueba negativa: sala con capacidad insuficiente ===");
-        try {
-            new ReservaBuilder()
-                .estudiante(new Estudiante("E001", "Laura"))
-                .fecha(LocalDate.now().plusDays(7))
-                .horaInicio(LocalTime.of(14, 0))
-                .duracionHoras(2)
-                .cantidadPersonas(6)
-                .sala(new Sala("A", "Sala A", 2))
-                .build();
-        } catch (IllegalStateException ex) {
-            System.out.println("Construcción rechazada: " + ex.getMessage());
-        }
+        System.out.println("\n=== P04: sala preferida C ===");
+        EstrategiaSeleccionSala preferida = new SeleccionSalaPreferida("C");
+        System.out.println("Preferida C: "
+            + preferida.seleccionar(disponibles, 4).orElse(null));
+
+        System.out.println("\n=== P05: sala preferida B para 7 personas ===");
+        EstrategiaSeleccionSala preferidaNoAdecuada = new SeleccionSalaPreferida("B");
+        System.out.println("Preferida B para 7: "
+            + preferidaNoAdecuada.seleccionar(disponibles, 7).orElse(null));
     }
 }

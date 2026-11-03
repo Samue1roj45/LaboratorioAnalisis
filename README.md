@@ -15,7 +15,7 @@ Cada estación del laboratorio está en su propia rama y parte de la anterior:
 | `estacion-1` | Comprender el problema y modelar el flujo | ✅ Terminada |
 | `estacion-2` | Crear el dominio y ejecutar la primera versión | ✅ Terminada |
 | `estacion-3` | Construir reservas con Builder | ✅ Terminada |
-| `estacion-4` | Seleccionar salas con Strategy | ⏳ Pendiente |
+| `estacion-4` | Seleccionar salas con Strategy | ✅ Terminada |
 | `estacion-5` | Separar el acceso a datos y coordinar con Facade | ⏳ Pendiente |
 | `estacion-6` | Notificar eventos con Observer | ⏳ Pendiente |
 | `estacion-7` | Controlar el ciclo de vida con State | ⏳ Pendiente |
@@ -40,3 +40,9 @@ Cada estación del laboratorio está en su propia rama y parte de la anterior:
 - Pruebas: P01 (reserva valida), P02 (sin estudiante, se rechaza) y sala con capacidad insuficiente (se rechaza).
 - Punto de control: [`docs/estacion-3.md`](docs/estacion-3.md)
 - Captura de ejecucion: [`evidencias/estacion-3-ejecucion.jpg`](evidencias/estacion-3-ejecucion.jpg)
+
+### Estación 4 — Strategy
+- Interfaz `EstrategiaSeleccionSala` con dos implementaciones: `SeleccionPorCapacidad` (la sala mas pequeña que alcance) y `SeleccionSalaPreferida` (la que pidio el estudiante, si alcanza).
+- Pruebas: P03 (4 personas → Sala B), P04 (preferida C → Sala C) y P05 (preferida B para 7 → no hay sala).
+- Punto de control con la propuesta de una tercera estrategia (por equipamiento): [`docs/estacion-4.md`](docs/estacion-4.md)
+- Captura de ejecucion: [`evidencias/estacion-4-ejecucion.jpg`](evidencias/estacion-4-ejecucion.jpg)
