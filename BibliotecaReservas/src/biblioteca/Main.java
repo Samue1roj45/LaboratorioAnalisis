@@ -6,31 +6,50 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        RepositorioSalas salas = new RepositorioSalasMemoria();
-        RepositorioReservasMemoria reservas = new RepositorioReservasMemoria();
-        ReservaFacade fachada = new ReservaFacade(salas, reservas,
-            List.of(new NotificadorEstudiante(), new RegistroEventos()));
+        ReservaFacade fachada = new ReservaFacade(
+            new RepositorioSalasMemoria(),
+            new RepositorioReservasMemoria(),
+            List.of(new NotificadorEstudiante(), new RegistroEventos())
+        );
 
-        System.out.println("=== P06: reserva exitosa mediante la fachada ===");
-        fachada.realizarReserva(
-            new Estudiante("E001", "Laura"),
+        System.out.println("=== P07: confirmar una reserva pendiente ===");
+        Reserva r1 = crear(fachada, "E001", "Laura");
+        System.out.println(r1);
+
+        System.out.println("\n=== P08: cancelar una reserva confirmada ===");
+        r1.cancelar();
+        System.out.println(r1);
+
+        System.out.println("\n=== P09: intentar confirmar una reserva cancelada ===");
+        intentar(r1::confirmar);
+        System.out.println(r1);
+
+        System.out.println("\n=== P11: finalizar otra reserva confirmada ===");
+        Reserva r2 = crear(fachada, "E004", "Samuel");
+        r2.finalizar();
+        System.out.println(r2);
+
+        System.out.println("\n=== Intentar cancelar una reserva finalizada ===");
+        intentar(r2::cancelar);
+        System.out.println(r2);
+    }
+
+    private static Reserva crear(ReservaFacade fachada, String id, String nombre) {
+        return fachada.realizarReserva(
+            new Estudiante(id, nombre),
             LocalDate.now().plusDays(7),
             LocalTime.of(14, 0),
             2,
-            4,
-            new SeleccionPorCapacidad()
-        ).ifPresent(System.out::println);
-
-        System.out.println("\n=== P10: solicitud para 10 personas ===");
-        fachada.realizarReserva(
-            new Estudiante("E003", "Camila"),
-            LocalDate.now().plusDays(9),
-            LocalTime.of(9, 0),
             2,
-            10,
             new SeleccionPorCapacidad()
-        );
+        ).orElseThrow();
+    }
 
-        System.out.println("\nReservas registradas: " + reservas.obtenerTodas().size());
+    private static void intentar(Runnable operacion) {
+        try {
+            operacion.run();
+        } catch (IllegalStateException ex) {
+            System.out.println("Operación rechazada: " + ex.getMessage());
+        }
     }
 }
