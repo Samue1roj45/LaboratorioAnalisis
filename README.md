@@ -19,7 +19,7 @@ Cada estación del laboratorio está en su propia rama y parte de la anterior:
 | `estacion-5` | Separar el acceso a datos y coordinar con Facade | ✅ Terminada |
 | `estacion-6` | Notificar eventos con Observer | ✅ Terminada |
 | `estacion-7` | Controlar el ciclo de vida con State | ✅ Terminada |
-| `estacion-8` | Integrar y ejecutar la aplicación completa | ⏳ Pendiente |
+| `estacion-8` | Integrar y ejecutar la aplicación completa | ✅ Terminada |
 
 ## Avance
 
@@ -66,3 +66,10 @@ Cada estación del laboratorio está en su propia rama y parte de la anterior:
 - Pruebas obligatorias: P07 (confirmar pendiente), P08 (cancelar confirmada), P09 (confirmar cancelada, se rechaza sin aviso), P11 (finalizar confirmada) y cancelar una finalizada (se rechaza).
 - Punto de control: [`docs/estacion-7.md`](docs/estacion-7.md)
 - Captura de ejecucion: [`evidencias/estacion-7-ejecucion.jpg`](evidencias/estacion-7-ejecucion.jpg)
+
+### Estación 8 — Aplicación completa
+- `Main` final: solo arma las dependencias y presenta el flujo.
+- Se verifican los 6 puntos de la seccion 8.1 de la guia.
+- Limitacion: la disponibilidad es una lista fija, no se controlan cruces de horario ni se guarda nada entre ejecuciones.
+- Detalle: [`docs/estacion-8.md`](docs/estacion-8.md)
+- Captura de ejecucion: [`evidencias/estacion-8-ejecucion.jpg`](evidencias/estacion-8-ejecucion.jpg)
