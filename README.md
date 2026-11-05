@@ -16,7 +16,7 @@ Cada estación del laboratorio está en su propia rama y parte de la anterior:
 | `estacion-2` | Crear el dominio y ejecutar la primera versión | ✅ Terminada |
 | `estacion-3` | Construir reservas con Builder | ✅ Terminada |
 | `estacion-4` | Seleccionar salas con Strategy | ✅ Terminada |
-| `estacion-5` | Separar el acceso a datos y coordinar con Facade | ⏳ Pendiente |
+| `estacion-5` | Separar el acceso a datos y coordinar con Facade | ✅ Terminada |
 | `estacion-6` | Notificar eventos con Observer | ⏳ Pendiente |
 | `estacion-7` | Controlar el ciclo de vida con State | ⏳ Pendiente |
 | `estacion-8` | Integrar y ejecutar la aplicación completa | ⏳ Pendiente |
@@ -46,3 +46,10 @@ Cada estación del laboratorio está en su propia rama y parte de la anterior:
 - Pruebas: P03 (4 personas → Sala B), P04 (preferida C → Sala C) y P05 (preferida B para 7 → no hay sala).
 - Punto de control con la propuesta de una tercera estrategia (por equipamiento): [`docs/estacion-4.md`](docs/estacion-4.md)
 - Captura de ejecucion: [`evidencias/estacion-4-ejecucion.jpg`](evidencias/estacion-4-ejecucion.jpg)
+
+### Estación 5 — Facade y repositorios
+- Interfaces `RepositorioSalas` y `RepositorioReservas` con sus implementaciones en memoria.
+- `ReservaFacade` coordina consultar, seleccionar, construir y registrar; recibe los repositorios por constructor (inversion de dependencias).
+- Pruebas: P06 (reserva por la fachada) y P10 (10 personas → no se crea reserva). La reserva aun queda Pendiente porque los estados reales llegan en la Estación 7.
+- Punto de control: [`docs/estacion-5.md`](docs/estacion-5.md)
+- Captura de ejecucion: [`evidencias/estacion-5-ejecucion.jpg`](evidencias/estacion-5-ejecucion.jpg)
