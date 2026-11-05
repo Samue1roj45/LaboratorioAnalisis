@@ -2,12 +2,14 @@ package biblioteca;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         RepositorioSalas salas = new RepositorioSalasMemoria();
         RepositorioReservasMemoria reservas = new RepositorioReservasMemoria();
-        ReservaFacade fachada = new ReservaFacade(salas, reservas);
+        ReservaFacade fachada = new ReservaFacade(salas, reservas,
+            List.of(new NotificadorEstudiante(), new RegistroEventos()));
 
         System.out.println("=== P06: reserva exitosa mediante la fachada ===");
         fachada.realizarReserva(

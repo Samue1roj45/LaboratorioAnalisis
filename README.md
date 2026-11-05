@@ -17,7 +17,7 @@ Cada estación del laboratorio está en su propia rama y parte de la anterior:
 | `estacion-3` | Construir reservas con Builder | ✅ Terminada |
 | `estacion-4` | Seleccionar salas con Strategy | ✅ Terminada |
 | `estacion-5` | Separar el acceso a datos y coordinar con Facade | ✅ Terminada |
-| `estacion-6` | Notificar eventos con Observer | ⏳ Pendiente |
+| `estacion-6` | Notificar eventos con Observer | ✅ Terminada |
 | `estacion-7` | Controlar el ciclo de vida con State | ⏳ Pendiente |
 | `estacion-8` | Integrar y ejecutar la aplicación completa | ⏳ Pendiente |
 
@@ -53,3 +53,10 @@ Cada estación del laboratorio está en su propia rama y parte de la anterior:
 - Pruebas: P06 (reserva por la fachada) y P10 (10 personas → no se crea reserva). La reserva aun queda Pendiente porque los estados reales llegan en la Estación 7.
 - Punto de control: [`docs/estacion-5.md`](docs/estacion-5.md)
 - Captura de ejecucion: [`evidencias/estacion-5-ejecucion.jpg`](evidencias/estacion-5-ejecucion.jpg)
+
+### Estación 6 — Observer
+- Interfaz `ObservadorReserva` con `NotificadorEstudiante` y `RegistroEventos`.
+- `Reserva` guarda su lista de observadores y les avisa en `cambiarEstado`; `ReservaFacade` los engancha a cada reserva antes de guardarla.
+- Los avisos se ven en accion desde la Estación 7 (P07 y P08).
+- Punto de control: [`docs/estacion-6.md`](docs/estacion-6.md)
+- Captura de ejecucion: [`evidencias/estacion-6-ejecucion.jpg`](evidencias/estacion-6-ejecucion.jpg)
